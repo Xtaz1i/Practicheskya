@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    setlocale(0, "");      // корректный вывод русских символов
+    srand(time(nullptr));  // инициализация генератора случайных чисел
+
+    int secret = rand() % 101;  // число от 0 до 100
+    int guess;
+
+    cout << "Попробуй угадать число от 0 до 100!" << endl;
+
+    while (true) {
+        cout << "Введи число: ";
+        cin >> guess;
+
+        if (guess < secret) {
+            cout << "Загаданное число больше." << endl;
+        }
+        else if (guess > secret) {
+            cout << "Загаданное число меньше." << endl;
+        }
+        else {
+            cout << "Поздравляю! Ты угадал число!" << endl;
+            break;
+        }
+    }
+
+    return 0;
+}
