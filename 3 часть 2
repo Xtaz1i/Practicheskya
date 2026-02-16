@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int num;
+
+    // ввод числа
+    cout << "Введите число: ";
+    cin >> num;
+
+    cout << "Делители числа " << num << ": ";
+
+    // перебор чисел от 1 до num
+    for (int i = 1; i <= num; i++) {
+
+        // если делится без остатка — это делитель
+        if (num % i == 0) {
+            cout << i << " ";
+        }
+    }
+
+    cout << endl;
+
+    return 0;
+}
