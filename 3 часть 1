@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    for (int i = 1; i <= 9; i++) {
+        for (int j = 1; j <= 9; j++) {
+
+            int multiply = i * j;
+
+            // если число однозначное — добавляем пробел для ровности
+            if (multiply < 10) {
+                cout << " ";
+            }
+
+            cout << multiply << " ";
+        }
+
+        // переход на новую строку после каждой строки таблицы
+        cout << endl;
+    }
+
+    return 0;
+}
