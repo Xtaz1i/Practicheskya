@@ -1,0 +1,104 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+int choice;
+double a, b;
+
+do {
+cout << "\n=== МЕНЮ КАЛЬКУЛЯТОРА ===\n";
+cout << "1. Сложение\n";
+cout << "2. Вычитание\n";
+cout << "3. Умножение\n";
+cout << "4. Деление\n";
+cout << "5. Возведение в степень\n";
+cout << "6. Квадратный корень\n";
+cout << "7. Найти 1% от числа\n";
+cout << "8. Факториал\n";
+cout << "9. Выход\n";
+cout << "Выберите пункт: ";
+cin >> choice;
+
+switch (choice) {
+
+    case 1:
+        cout << "Введите два числа: ";
+        cin >> a >> b;
+        cout << "Ответ: " << a + b << endl;
+        break;
+
+    case 2:
+        cout << "Введите два числа: ";
+        cin >> a >> b;
+        cout << "Ответ: " << a - b << endl;
+        break;
+
+    case 3:
+        cout << "Введите два числа: ";
+        cin >> a >> b;
+        cout << "Ответ: " << a * b << endl;
+        break;
+
+    case 4:
+        cout << "Введите два числа: ";
+        cin >> a >> b;
+        if (b != 0)
+            cout << "Ответ: " << a / b << endl;
+        else
+            cout << "Ошибка! Деление на ноль невозможно.\n";
+        break;
+
+    case 5: {
+        int power;
+        cout << "Введите число и степень: ";
+        cin >> a >> power;
+        cout << "Ответ: " << pow(a, power) << endl;
+        break;
+    }
+
+    case 6:
+        cout << "Введите число: ";
+        cin >> a;
+        if (a >= 0)
+            cout << "Ответ: " << sqrt(a) << endl;
+        else
+            cout << "Ошибка! Нельзя извлечь корень из отрицательного числа.\n";
+        break;
+
+    case 7:
+        cout << "Введите число: ";
+        cin >> a;
+        cout << "1% = " << a / 100.0 << endl;
+        break;
+
+    case 8: {
+        int n;
+        cout << "Введите целое число: ";
+        cin >> n;
+
+        if (n < 0) {
+            cout << "Ошибка! Факториал отрицательного числа не существует.\n";
+        } else {
+            unsigned long long factorial = 1;
+            for (int i = 1; i <= n; i++) {
+                factorial *= i;
+            }
+            cout << "Факториал = " << factorial << endl;
+        }
+        break;
+    }
+
+    case 9:
+        cout << "Программа завершена.\n";
+        break;
+
+    default:
+        cout << "Неверный выбор. Попробуйте снова.\n";
+}
+
+} while (choice != 9);
+
+return 0;
+}
