@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+    int N;
+
+    // Проверка корректности ввода количества дней
+    do {
+        cout << "Введите количество дней в месяце (1-31): ";
+        cin >> N;
+    } while (N < 1 || N > 31);
+
+    double temperatures[31];
+
+    // Ввод температур
+    for (int i = 0; i < N; i++) {
+        cout << "Введите среднюю температуру за день " << i + 1 << ": ";
+        cin >> temperatures[i];
+    }
+
+    // Вывод температур
+    cout << "\nТемпературы за месяц:\n";Ы
+    for (int i = 0; i < N; i++) {
+        cout << temperatures[i] << " ";
+    }
+    cout << endl;
+
+    // Поиск максимума и минимума
+    double maxTemp = temperatures[0];
+    double minTemp = temperatures[0];
+    double sum = 0;
+    int belowZero = 0;
+
+    for (int i = 0; i < N; i++) {
+        if (temperatures[i] > maxTemp) maxTemp = temperatures[i];
+        if (temperatures[i] < minTemp) minTemp = temperatures[i];
+        sum += temperatures[i];
+        if (temperatures[i] < 0) belowZero++;
+    }
+
+    cout << "Максимальная температура: " << maxTemp << endl;
+    cout << "Минимальная температура: " << minTemp << endl;
+    cout << "Среднемесячная температура: " << sum / N << endl;
+    cout << "Дней с температурой ниже 0: " << belowZero << endl;
