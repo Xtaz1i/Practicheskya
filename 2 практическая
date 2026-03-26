@@ -5,8 +5,8 @@
 using namespace std;
 
 int main() {
-    setlocale(0, "");      // корректный вывод русских символов
-    srand(time(nullptr));  // инициализация генератора случайных чисел
+    setlocale(0, "");      
+    srand(time(nullptr));  
 
     int secret = rand() % 101;  // число от 0 до 100
     int guess;
