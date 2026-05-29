@@ -1,0 +1,90 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Animal {
+protected:
+string name;
+
+public:
+Animal(string n) : name(n) {}
+
+virtual void move() = 0;
+
+virtual void makeSound() {
+cout << name << " издает неизвестный звук" << endl;
+}
+
+virtual ~Animal() {
+cout << "Удаляется Animal: " << name << endl;
+}
+};
+
+class Cat : public Animal {
+public:
+Cat(string n) : Animal(n) {}
+
+void makeSound() override {
+cout << name << " говорит мяу" << endl;
+}
+
+void move() override {
+cout << name << " крадется" << endl;
+}
+};
+
+class Dog : public Animal {
+string breed;
+
+public:
+Dog(string n, string b) : Animal(n), breed(b) {}
+
+void makeSound() override {
+cout << name << " (" << breed << ") говорит Гав-гав" << endl;
+}
+
+void move() override {
+cout << name << " бегает" << endl;
+}
+};
+
+class Bird : public Animal {
+bool canFly;
+
+public:
+Bird(string n, bool f) : Animal(n), canFly(f) {}
+
+void makeSound() override {
+cout << name << " чирикает" << endl;
+}
+
+void move() override {
+if (canFly)
+cout << name << " летает" << endl;
+else
+cout << name << " прыгает" << endl;
+}
+};
+
+void animalShow(Animal* a) {
+a->makeSound();
+a->move();
+cout << endl;
+}
+
+int main() {
+vector<Animal*> animals;
+
+animals.push_back(new Cat("Барсик"));
+animals.push_back(new Dog("Шарик", "Овчарка"));
+animals.push_back(new Bird("Кеша", true));
+
+for (Animal* a : animals)
+animalShow(a);
+
+for (Animal* a : animals)
+delete a;
+
+return 0;
+}
